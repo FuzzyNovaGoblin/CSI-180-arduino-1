@@ -6,14 +6,14 @@ const int SHIELD_BLOCK_DIS = 57;
 
 bool usedSword;
 bool usedShild;
-bool waiting;
+bool waitingInput;
 int pSword;
 int eSword;
 int pShield;
 int eShield;
 
 void setup() {
-  waiting = false;
+  waitingInput = false;
   pSword = 0;
   eSword = 0;
   pShield = 0; 
@@ -27,15 +27,20 @@ void loop() {
   int button3 = Esplora.readButton(SWITCH_3);
   int button4 = Esplora.readButton(SWITCH_4);
   
-  if(waiting){
-    if(!usedShild && (button3 == LOW || button4 == LOW)){
-      
+  if(waitingInput){
+    if(!usedShild){
+      if(button3 == LOW){
+        
+      }
+      if(button4 == LOW){
+        
+      }
     }
   }
   else{
     eShield = random(MAX_SLIDE+1) * (bool)random(2) ? -1 : 1;
     eSword = random(MAX_SLIDE+1) * (bool)random(2) ? -1 : 1;
-    waiting = true;
+    waitingInput = true;
   }
 
   int val = Esplora.readSlider();
